@@ -3,8 +3,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { MenuItem, FormControl, Select, Card, CardContent } from '@material-ui/core';
 import InfoBox from './InfoBox/InfoBox';
-import Map from './Map';
+import Map from './Map/Map';
 import Table from './Table/Table';
+import { sortData } from './utils/util';
 
 function App() {
 
@@ -32,7 +33,8 @@ function App() {
             value: country.countryInfo.iso2
           }));
 
-          setTableData(data);
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         })
     }
