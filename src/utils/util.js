@@ -10,11 +10,11 @@ const casesTypeColors = {
     },
     recovered: {
         hex: "#7dd71d",
-        multiplier: 120,
+        multiplier: 100,
     },
     deaths: {
         hex: "#fb4443",
-        multiplier: 110,
+        multiplier: 200,
     },
 };
 
@@ -31,6 +31,9 @@ export const sortData = (data) => {
     return sortedData;
 }
 
+export const prettyPrintStat = (stat) =>
+    stat ? `+${numeral(stat).format("0.0a")}` : "+0";
+
 // Shows the circles on the map
 export const showDataOnMap = (data, casesType = "cases") => (
     data.map(country => (
@@ -40,13 +43,13 @@ export const showDataOnMap = (data, casesType = "cases") => (
                 Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
             }>
             <Popup>
-            <div className="info-container">
-                <div className="info-flag" style={{ backgroundImage: `url(${country.countryInfo.flag})` }} />
-                <div className="info-name">{country.country}</div>
-                <div>Cases: {numeral(country.cases).format("0,0")}</div>
-                <div>Recovered: {numeral(country.recovered).format("0,0")}</div>
-                <div>Deaths: {numeral(country.deaths).format("0,0")}</div>
-            </div>
+                <div className="info-container">
+                    <div className="info-flag" style={{ backgroundImage: `url(${country.countryInfo.flag})` }} />
+                    <div className="info-name">{country.country}</div>
+                    <div className="info-cases">Cases: {numeral(country.cases).format("0,0")}</div>
+                    <div className="info-recovered">Recovered: {numeral(country.recovered).format("0,0")}</div>
+                    <div className="info-death">Deaths: {numeral(country.deaths).format("0,0")}</div>
+                </div>
             </Popup>
         </Circle>
     ))
