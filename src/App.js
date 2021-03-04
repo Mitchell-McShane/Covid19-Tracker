@@ -73,7 +73,7 @@ function App() {
       <div className="app-left">
         <div className="app-header">
           <h1>COVID-19 TRACKER</h1>
-          <FormControl className="app_dropdown">
+          <FormControl className="app-dropdown">
             <Select variant="outlined" onChange={onCountryChange} value={country}>
               <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => (
@@ -88,6 +88,7 @@ function App() {
 
         <div className="app-stats">
           <InfoBox
+            isRed
             active={casesType === "cases"}
             onClick={(e) => setCasesType("cases")}
             title="Coronavirus Cases"
@@ -102,6 +103,7 @@ function App() {
             total={prettyPrintStat(countryInfo.recovered)} />
 
           <InfoBox
+            isGrey
             active={casesType === "deaths"}
             onClick={(e) => setCasesType("deaths")}
             title="Deaths"

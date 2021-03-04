@@ -9,7 +9,7 @@ const casesTypeColors = {
         multiplier: 800,
     },
     recovered: {
-        hex: "#18EADF",
+        hex: "#43FF8D",
         multiplier: 1200,
     },
     deaths: {
